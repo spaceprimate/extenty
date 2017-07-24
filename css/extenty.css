@@ -1,2 +1,11 @@
-.extenty{width: 100px; height: 100px; background: url("../img/bg3.png"); background-size: 100px 100px; position: relative;}
-.extenty .box{position: absolute; background: rgba(255, 34, 34, 0.5);}
+.extenty{
+    width: 100px; 
+    height: 100px; 
+    background: url("../img/map-osm.png"); 
+    background-size: 100px 100px; 
+    position: relative;
+}
+.extenty-box{
+    position: absolute; 
+    background: rgba(255, 34, 34, 0.5);
+}
