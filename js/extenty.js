@@ -43,7 +43,7 @@
     }
 
     /**
-     * Plot Latitude onto Web Mercator ESPG:3857 pixels
+     * Plot Latitude onto Web Mercator EPSG:3857 pixels
      * @param {*} lat 
      */
     function convertLat(lat){
@@ -54,7 +54,7 @@
     }
 
     /**
-     * Plot Longitude onto Web Mercator ESPG:3857 pixels
+     * Plot Longitude onto Web Mercator EPSG:3857 pixels
      * @param {*} long 
      */
     function convertLong(long){
