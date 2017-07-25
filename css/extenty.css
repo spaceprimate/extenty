@@ -8,4 +8,5 @@
 .extenty-box{
     position: absolute; 
     background: rgba(255, 34, 34, 0.5);
+    border: 1px solid rgb(255, 34, 34);
 }

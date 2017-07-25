@@ -1,22 +1,42 @@
-(function extenty(){
+function extenty(){
     var baseWidth = 100; // in pixels
     var baseHeight = 100;
-    var extents = document.getElementsByClassName("extenty-box");
+    
 
     /**
      * Cycle through all the elements with the "extenty-box" class. 
      * Get the coordinates in the dat-coords attribute
      * update styles for each box
      */
-    var i;
-    for (i = 0; i < extents.length; i++) {
-        var coords = convertCoords( extents[i].dataset.coords.split(',') );
+    this.updateExtents = function(){
+        var i;
+        var extents = document.getElementsByClassName("extenty-box");
+        for (i = 0; i < extents.length; i++) {
+            var coords = convertCoords( extents[i].dataset.coords.split(',') );
+            var width = coords[2] - coords[0];
+            var height = coords[3] - coords[1];
+            extents[i].style.top = coords[1] + "px";
+            extents[i].style.left = coords[0] + "px";
+            extents[i].style.width = width + "px";
+            extents[i].style.height = height + "px";
+        }
+    }
+
+    /**
+     * Returns a JSON formatted css style for a given bounding box
+     * @param {[]} - [x,y,x,y]
+     */
+    this.getBoxStyle = function(c){
+        var coords = convertCoords( c );
         var width = coords[2] - coords[0];
         var height = coords[3] - coords[1];
-        extents[i].style.top = coords[1] + "px";
-        extents[i].style.left = coords[0] + "px";
-        extents[i].style.width = width + "px";
-        extents[i].style.height = height + "px";
+        var style = {
+            'top':      coords[1] + "px",
+            'left':     coords[0] + "px",
+            'width':    width + "px",
+            'height':   height + "px"
+        };
+        return style;
     }
 
     /**
@@ -62,4 +82,5 @@
         var newLong =  Math.ceil( (long + 180) * baseWidth / 360 );
         return newLong;
     }
-})();
+};
+
