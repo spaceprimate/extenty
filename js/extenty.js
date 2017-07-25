@@ -36,6 +36,8 @@ function extenty(){
             'width':    width + "px",
             'height':   height + "px"
         };
+        if (height == 0 || width == 0){style.display = 'none';}
+        if (height * width < 20){style.borderWidth = '3px';}
         return style;
     }
 
@@ -59,6 +61,9 @@ function extenty(){
             coords[1] = coords[3];
             coords[3] = temp;
         }
+        if( isNaN(coords[0]) ||  isNaN(coords[1]) ||  isNaN(coords[2]) ||  isNaN(coords[3]) ){
+            return [0,0,0,0];
+        }
         return coords;
     }
 
@@ -68,8 +73,10 @@ function extenty(){
      */
     function convertLat(lat){
         lat = parseInt(lat);
-        lat = baseHeight / (2 * Math.PI) * Math.log(Math.tan(Math.PI / 4 + (lat / 2) * Math.PI / 180)); //whew
+        lat = baseHeight / (2 * Math.PI) * Math.log(Math.tan(Math.PI / 4 + (lat / 2) * Math.PI / 180)); //whew        
         lat = ( baseHeight / 2 ) - lat;
+        if (lat < 0){lat = 0;}
+        if (lat > baseHeight){lat = baseHeight;}
         return lat;
     }
 
@@ -79,8 +86,9 @@ function extenty(){
      */
     function convertLong(long){
         long = parseInt(long);
-        var newLong =  Math.ceil( (long + 180) * baseWidth / 360 );
-        return newLong;
+        long =  Math.ceil( (long + 180) * baseWidth / 360 );
+        if (long < 0){long = 0;}
+        if (long > baseWidth){long = baseWidth;}
+        return long;
     }
 };
-

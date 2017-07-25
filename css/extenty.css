@@ -4,6 +4,7 @@
     background: url("../img/map-osm.png"); 
     background-size: 100px 100px; 
     position: relative;
+    overflow: hidden;
 }
 .extenty-box{
     position: absolute; 
