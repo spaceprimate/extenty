@@ -36,8 +36,8 @@ function extenty(){
             'width':    width + "px",
             'height':   height + "px"
         };
-        if (height == 0 || width == 0){style.display = 'none';}
-        if (height * width < 20){style.borderWidth = '3px';}
+        if (coords[0] == 9999){style.display = 'none';}
+        if (height * width < 20){style.borderWidth = '2px';}
         return style;
     }
 
@@ -62,7 +62,8 @@ function extenty(){
             coords[3] = temp;
         }
         if( isNaN(coords[0]) ||  isNaN(coords[1]) ||  isNaN(coords[2]) ||  isNaN(coords[3]) ){
-            return [0,0,0,0];
+            console.log("NaN value retured");
+            return [9999,0,0,0];
         }
         return coords;
     }
@@ -86,7 +87,7 @@ function extenty(){
      */
     function convertLong(long){
         long = parseInt(long);
-        long =  Math.ceil( (long + 180) * baseWidth / 360 );
+        long =  (long + 180) * baseWidth / 360;
         if (long < 0){long = 0;}
         if (long > baseWidth){long = baseWidth;}
         return long;
